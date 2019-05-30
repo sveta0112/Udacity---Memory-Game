@@ -1,5 +1,3 @@
-# Memory Game Project
-
 ## Memory Game decription
 This is memory allows user to pick cards, once all 16 cards are matched, game is over!
 
