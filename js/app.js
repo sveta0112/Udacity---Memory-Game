@@ -21,16 +21,15 @@ let card = document.querySelectorAll('.card');
 //convert Nodelist to Array, which holds nodes with class card
 let cards = Array.from(card);
 
-//element with class moves
-let movesCounter = document.querySelector('.moves');
-//starter indicator for moves
-let moves = 0;
-
-
 // array of opened cards
 let openedCards = [];
 // array of matched cards
 let matchedCardArray = [];
+
+//element with class moves
+let movesCounter = document.querySelector('.moves');
+//starter indicator for moves
+let moves = 0;
 
 
 //modal box && its content
@@ -38,7 +37,6 @@ let modal = document.querySelector('.modal');
 let totalMoves = document.querySelector('#totalMoves');
 let totalTime = document.querySelector('#totalTime');
 let totalRate = document.querySelector('#totalRate');
-
 
 
 //element with class timer && its content
@@ -69,8 +67,8 @@ function shuffle(array) {
 }
 
 
-//once the webpage is loaded, start the game
-document.body.onload = initGame();
+//invoke function to start the game
+initGame();
 
 
 //@description of initializing new start of game
@@ -244,17 +242,16 @@ function closeModal() {
    initGame();
 }
 
-//@description of function when reset button is clicked
-function reset() {
-    //invoke new game
-    initGame();
-}
-
-
 //@description of function when play again button is clicked
 function playAgain(){
     //hide modal box
     modal.style.display = 'none';
+    //invoke new game
+    initGame();
+}
+
+//@description of function when reset button is clicked
+function reset() {
     //invoke new game
     initGame();
 }
