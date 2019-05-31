@@ -34,7 +34,7 @@ let matchedCardArray = [];
 
 
 //modal box && its content
-let modal = document.querySelector('.modal')
+let modal = document.querySelector('.modal');
 let totalMoves = document.querySelector('#totalMoves');
 let totalTime = document.querySelector('#totalTime');
 let totalRate = document.querySelector('#totalRate');
