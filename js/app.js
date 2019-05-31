@@ -10,7 +10,7 @@
  */
 
 
-// deck of cards 
+// deck of cards
 const deck = document.querySelector('.deck');
 
 // stars-icons
@@ -32,18 +32,18 @@ let openedCards = [];
 // array of matched cards
 let matchedCardArray = [];
 
- 
+
 //modal box && its content
 let modal = document.querySelector('.modal')
 let totalMoves = document.querySelector('#totalMoves');
 let totalTime = document.querySelector('#totalTime');
 let totalRate = document.querySelector('#totalRate');
 
- 
+
 
 //element with class timer && its content
 let timer = document.querySelector('.timer');
-let second = 0, 
+let second = 0,
     minute = 0,
     hour = 0,
     interval;
@@ -66,7 +66,7 @@ function shuffle(array) {
     }
 
     return array;
-};
+}
 
 
 //once the webpage is loaded, start the game
@@ -94,14 +94,14 @@ function initGame() {
     //reset moves number
     moves = 0;
     movesCounter.innerHTML = moves;
-   
-    //reset stars 
+
+    //reset stars
     stars.forEach(star => {
         star.style.visibility = 'visible';
     });
     //reset timer
     second = 0;
-    minute = 0; 
+    minute = 0;
     hour = 0;
     timer.innerHTML = `${minute} mins ${second} secs`;
     clearInterval(interval);
@@ -135,7 +135,7 @@ function openCard() {
             unmatchedCards();
         }
     }
-};
+}
 
 // @description of function, when cards match
 function matchedCards() {
@@ -147,7 +147,7 @@ function matchedCards() {
     openedCards[1].classList.add('match');
     openedCards[1].classList.add('open');
     openedCards[1].classList.add('show');
-    
+
     //populate array of matched cards with those two cards
     matchedCardArray.push(openedCards[0], openedCards[1]);
     //empty out array opened cards
@@ -228,12 +228,12 @@ function openModal(){
 
         // star rating handler
         let starRating = document.querySelector('.stars').innerHTML;
-        
+
         //HTML displaying of modal content with dynamic output of moves, timer, star rating
         totalMoves.innerHTML = `Your total moves are:   ${moves}`;
         totalTime.innerHTML =   `Finished within:   ${timer.innerHTML}`;
         totalRate.innerHTML = `Your Rating:  ${starRating}`;
-    };
+    }
 }
 
 //@description of function when modal is closed
@@ -266,9 +266,9 @@ for (let i = 0; i < cards.length; i++) {
     card = cards[i];
     //to each card add event listener for opening card
     card.addEventListener('click',  openCard);
-    //to each card add event listener,on each iteration check if array of matched cards is equal 16, if yes --> invoke open modal 
+    //to each card add event listener,on each iteration check if array of matched cards is equal 16, if yes --> invoke open modal
     card.addEventListener('click', openModal);
-};
+}
 //add event listener to close button click
 closeButton.addEventListener('click', closeModal);
 //add event listener to reset button click
