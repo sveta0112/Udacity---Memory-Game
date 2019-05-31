@@ -27,7 +27,7 @@ let movesCounter = document.querySelector('.moves');
 let moves = 0;
 
 
-// array array of opened cards
+// array of opened cards
 let openedCards = [];
 // array of matched cards
 let matchedCardArray = [];
@@ -112,7 +112,7 @@ function initGame() {
 function openCard() {
     //clicked card
     let card = this;
-    //populate array of opened cards with clciked card
+    //populate array of opened cards with clicked card
     openedCards.push(card);
     //check if clicked card does not have below classes
     if(!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
@@ -179,10 +179,14 @@ function moveCounter() {
         startTimer();
     }
     // star rates based on moves
+    // Array of 3 stars (Nodelist into Array)
     let starsArray = Array.from(stars);
+    //if moves are equal 10
     if(moves === 10) {
+        //third star will be hidden
         starsArray[2].style.visibility = 'hidden';
     } else if(moves === 16) {
+        //second star will be hidden
         starsArray[1].style.visibility = 'hidden';
     }
 }
@@ -213,7 +217,7 @@ function startTimer(){
 }
 
 
-//@description of function when open modal pop up (once user match all cards)
+//@description of function when open modal pop up (once user matches all cards)
 function openModal(){
     //check if array of matched cards is equal 16
     if (matchedCardArray.length === 16) {
@@ -225,7 +229,7 @@ function openModal(){
         // star rating handler
         let starRating = document.querySelector('.stars').innerHTML;
         
-        //HTML diplaying of modal content with dynamic output of moves, timer, star rating
+        //HTML displaying of modal content with dynamic output of moves, timer, star rating
         totalMoves.innerHTML = `Your total moves are:   ${moves}`;
         totalTime.innerHTML =   `Finished within:   ${timer.innerHTML}`;
         totalRate.innerHTML = `Your Rating:  ${starRating}`;
