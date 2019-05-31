@@ -30,6 +30,7 @@ let matchedCardArray = [];
 let movesCounter = document.querySelector('.moves');
 //starter indicator for moves
 let moves = 0;
+let moveCount;
 
 
 //modal box && its content
@@ -109,16 +110,17 @@ function initGame() {
 function openCard() {
     //clicked card
     let card = this;
+    
     //check if clicked card does not have below classes
     if(!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
         //if that is true, add below classes to clicked card
         card.classList.add('open', 'show');
         //populate array of opened cards with clicked card
         openedCards.push(card);
+        //invoke moveCounter function (after first card is clicked)
+        moveCounter();
         //check if array of opened cards length equal 2 (always compare two cards with each other)
         if(openedCards.length === 2) {
-            //if its true, invoke moveCounter function
-            moveCounter();
             //compare 2 elements of array of opened cards based on data-set attribute
             if(openedCards[0].dataset.card === openedCards[1].dataset.card) {
                 //if that is true, invoke matchedCards function
@@ -130,6 +132,7 @@ function openCard() {
             }
         } 
     }
+    
 }
 
 // @description of function, when cards match
@@ -166,21 +169,24 @@ function unmatchedCards() {
 function moveCounter() {
     //increment by one
     moves += 1;
-    //HTML representation (displaying)
-    movesCounter.innerHTML = moves;
-    //when array of opened cards get to length of two, moves will be equal 1
+    //HTML representation (displaying) && handles correct output of moves
+    if(moves % 2 === 0) {
+        moveCount = moves / 2;
+    } else {
+        moveCount = Math.floor(moves / 2);
+    }
+    movesCounter.innerHTML = moveCount;
     if(moves === 1) {
-        //invoke startTimer function
         startTimer();
     }
     // star rates based on moves
     // Array of 3 stars (Nodelist into Array)
     let starsArray = Array.from(stars);
-    //if moves are equal 10
-    if(moves === 10) {
+    //if moves count is equal 10
+    if(moveCount === 10) {
         //third star will be hidden
         starsArray[2].style.visibility = 'hidden';
-    } else if(moves === 16) {
+    } else if(moveCount === 16) {
         //second star will be hidden
         starsArray[1].style.visibility = 'hidden';
     }
@@ -188,7 +194,11 @@ function moveCounter() {
 
 
 //@description of function when interval is set to update every 1sec
-function startTimer(){
+function startTimer() {
+    //starting timer, in order to avoid delay
+    if(second === 0) {
+        second++;
+    }
     interval = setInterval(() => {
         //HTML represantion (displaying timer)
         timer.innerHTML = `${minute} mins ${second} secs`;
@@ -225,7 +235,7 @@ function openModal(){
         let starRating = document.querySelector('.stars').innerHTML;
 
         //HTML displaying of modal content with dynamic output of moves, timer, star rating
-        totalMoves.innerHTML = `Your total moves are:   ${moves}`;
+        totalMoves.innerHTML = `Your total moves are:   ${moveCount}`;
         totalTime.innerHTML =   `Finished within:   ${timer.innerHTML}`;
         totalRate.innerHTML = `Your Rating:  ${starRating}`;
     }
