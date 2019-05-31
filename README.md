@@ -12,4 +12,4 @@ Try to match all cards with less moves.
 * Once cards are matched, cards will change color to green, and stay opened.
 * Once all 16 cards are matched, pop up modal will appear saying how many moves and time was consumed by user.
 
-![snippet](img/memory2.png)
+![snippet](img/memory3.png)
