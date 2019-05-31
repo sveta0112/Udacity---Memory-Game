@@ -30,6 +30,7 @@ let matchedCardArray = [];
 let movesCounter = document.querySelector('.moves');
 //starter indicator for moves
 let moves = 0;
+//correctly display count of moves
 let moveCount;
 
 
@@ -131,6 +132,11 @@ function openCard() {
                 unmatchedCards();
             }
         } 
+    }
+    // At the end gitcheck if all cards are matched
+    if (matchedCardArray.length === 16) {
+        clearInterval(interval);
+        openModal();
     }
     
 }
@@ -270,8 +276,6 @@ for (let i = 0; i < cards.length; i++) {
     card = cards[i];
     //to each card add event listener for opening card
     card.addEventListener('click',  openCard);
-    //to each card add event listener,on each iteration check if array of matched cards is equal 16, if yes --> invoke open modal
-    card.addEventListener('click', openModal);
 }
 //add event listener to close button click
 closeButton.addEventListener('click', closeModal);
