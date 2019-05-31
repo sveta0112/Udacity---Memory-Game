@@ -229,22 +229,17 @@ function startTimer() {
 
 
 //@description of function when open modal pop up (once user matches all cards)
-function openModal(){
-    //check if array of matched cards is equal 16
-    if (matchedCardArray.length === 16) {
-        //if that is true, clear interval
-        clearInterval(interval);
-        //display modal box
-        modal.style.display = 'block';
+function openModal() {
+    //display modal box
+    modal.style.display = 'block';
 
-        // star rating handler
-        let starRating = document.querySelector('.stars').innerHTML;
+    // star rating handler
+    let starRating = document.querySelector('.stars').innerHTML;
 
-        //HTML displaying of modal content with dynamic output of moves, timer, star rating
-        totalMoves.innerHTML = `Your total moves are:   ${moveCount}`;
-        totalTime.innerHTML =   `Finished within:   ${timer.innerHTML}`;
-        totalRate.innerHTML = `Your Rating:  ${starRating}`;
-    }
+    //HTML displaying of modal content with dynamic output of moves, timer, star rating
+    totalMoves.innerHTML = `Your total moves are:   ${moveCount}`;
+    totalTime.innerHTML =   `Finished within:   ${timer.innerHTML}`;
+    totalRate.innerHTML = `Your Rating:  ${starRating}`;
 }
 
 //@description of function when modal is closed
@@ -256,7 +251,7 @@ function closeModal() {
 }
 
 //@description of function when play again button is clicked
-function playAgain(){
+function playAgain() {
     //hide modal box
     modal.style.display = 'none';
     //invoke new game
