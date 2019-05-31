@@ -158,7 +158,7 @@ function unmatchedCards() {
         openedCards.forEach(card => card.classList.remove('open', 'show'));
         //then empty out array opened cards
         openedCards = [];
-    }, 1000);
+    }, 500);
 }
 
 
