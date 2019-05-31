@@ -105,17 +105,16 @@ function initGame() {
     clearInterval(interval);
 }
 
-
 // @description of function to open cards (populate array of opened cards, add classes to cards, check for matching cards)
 function openCard() {
     //clicked card
     let card = this;
-    //populate array of opened cards with clicked card
-    openedCards.push(card);
     //check if clicked card does not have below classes
     if(!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
         //if that is true, add below classes to clicked card
         card.classList.add('open', 'show');
+        //populate array of opened cards with clicked card
+        openedCards.push(card);
         //check if array of opened cards length equal 2 (always compare two cards with each other)
         if(openedCards.length === 2) {
             //if its true, invoke moveCounter function
@@ -129,9 +128,7 @@ function openCard() {
                 //if false, invoke unmatchedCards function
                 unmatchedCards();
             }
-        } else if(openedCards.length > 2) {
-            unmatchedCards();
-        }
+        } 
     }
 }
 
