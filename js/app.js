@@ -133,7 +133,7 @@ function openCard() {
             }
         } 
     }
-    // At the end gitcheck if all cards are matched
+    // At the end it checks if all cards are matched
     if (matchedCardArray.length === 16) {
         clearInterval(interval);
         openModal();
